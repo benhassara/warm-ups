@@ -1,13 +1,8 @@
 function nextHighest(n: number):any {
 	var strPerms:string[] = permutations(n.toString());
 	var permsDupes:number[] = toNum(strPerms) // process into sorted array of nums
-	var perms:number[] = removeDuplicates(permsDupes);
+	var perms:number[] = removeDuplicates(permsDupes); // remove duplicates
 	var nIndex = perms.indexOf(n);
-	
-	// console.log('n: ', n);
-	// console.log('perms: ', perms);
-	// console.log('nIndex: ', nIndex);
-	// console.log('perms[nIndex]: ', perms[nIndex]);
 	
 	if (nIndex !== perms.length - 1) {
 		return perms[nIndex + 1];
@@ -16,6 +11,7 @@ function nextHighest(n: number):any {
 		return false;
 	} 
 	
+	/* computes all the permutations of the input string */
 	function permutations(str: string): string[] {
 		if (str.length <= 1) {return [str];}
 		
@@ -33,6 +29,9 @@ function nextHighest(n: number):any {
 		return result;
 	}
 	
+	/* converts the array of strings to numbers
+	 * courtesy of Lance Powers 
+	 */
 	function toNum(result) {
 		var numResult = [];
 		result.forEach(function (perm) {
@@ -41,6 +40,7 @@ function nextHighest(n: number):any {
 		return numResult.sort(function(a, b) {return a-b;});
 	}
 	
+	/* removes duplicate values from the input array */
 	function removeDuplicates(numArr:number[]):number[] {
 		var wrk:number[] = numArr.slice(0);
 		var output:number[] = [];

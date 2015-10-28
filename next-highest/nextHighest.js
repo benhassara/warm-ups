@@ -1,18 +1,15 @@
 function nextHighest(n) {
     var strPerms = permutations(n.toString());
     var permsDupes = toNum(strPerms); // process into sorted array of nums
-    var perms = removeDuplicates(permsDupes);
+    var perms = removeDuplicates(permsDupes); // remove duplicates
     var nIndex = perms.indexOf(n);
-    // console.log('n: ', n);
-    // console.log('perms: ', perms);
-    // console.log('nIndex: ', nIndex);
-    // console.log('perms[nIndex]: ', perms[nIndex]);
     if (nIndex !== perms.length - 1) {
         return perms[nIndex + 1];
     }
     else {
         return false;
     }
+    /* computes all the permutations of the input string */
     function permutations(str) {
         if (str.length <= 1) {
             return [str];
@@ -28,6 +25,9 @@ function nextHighest(n) {
         });
         return result;
     }
+    /* converts the array of strings to numbers
+     * courtesy of Lance Powers
+     */
     function toNum(result) {
         var numResult = [];
         result.forEach(function (perm) {
@@ -35,6 +35,7 @@ function nextHighest(n) {
         });
         return numResult.sort(function (a, b) { return a - b; });
     }
+    /* removes duplicate values from the input array */
     function removeDuplicates(numArr) {
         var wrk = numArr.slice(0);
         var output = [];
