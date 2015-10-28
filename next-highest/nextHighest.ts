@@ -32,12 +32,12 @@ function nextHighest(n: number):any {
 	/* converts the array of strings to numbers
 	 * courtesy of Lance Powers 
 	 */
-	function toNum(result) {
-		var numResult = [];
-		result.forEach(function (perm) {
+	function toNum(result:string[]) {
+		var numResult:number[] = [];
+		result.forEach(function (perm:string) {
 			numResult.push(parseInt(perm))
 		});
-		return numResult.sort(function(a, b) {return a-b;});
+		return numResult.sort(function(a:number, b:number) {return a-b;});
 	}
 	
 	/* removes duplicate values from the input array */
